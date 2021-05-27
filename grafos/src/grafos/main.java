@@ -462,41 +462,41 @@ public class main extends javax.swing.JFrame {
                     ArrayList<String> adyasenciaA = new ArrayList();
                     ArrayList<String> adyasenciaB = new ArrayList();
                     for (edge e : edges) {
-                       // if (e != referencia) {
-                            if (e.getVerticeA().equalsIgnoreCase(referencia.getVerticeA())) {
-                                if (adyasenciaA.contains(e.getVerticeA())) {
+                        // if (e != referencia) {
+                        if (e.getVerticeA().equalsIgnoreCase(referencia.getVerticeA())) {
+                            if (adyasenciaA.contains(e.getVerticeA())) {
 
-                                } else {
-                                    adyasenciaA.add(e.getVerticeA());
-                                }
-
+                            } else {
+                                adyasenciaA.add(e.getVerticeA());
                             }
-                            if (e.getVerticeB().equalsIgnoreCase(referencia.getVerticeA())) {
-                                if (adyasenciaA.contains(e.getVerticeB())) {
 
-                                } else {
-                                    adyasenciaA.add(e.getVerticeB());
-                                }
-                            }
-                            if (e.getVerticeA().equalsIgnoreCase(referencia.getVerticeB())) {
-                                if (adyasenciaB.contains(e.getVerticeA())) {
+                        }
+                        if (e.getVerticeB().equalsIgnoreCase(referencia.getVerticeA())) {
+                            if (adyasenciaA.contains(e.getVerticeB())) {
 
-                                } else {
-                                    adyasenciaB.add(e.getVerticeA());
-                                }
+                            } else {
+                                adyasenciaA.add(e.getVerticeB());
                             }
-                            if (e.getVerticeB().equalsIgnoreCase(referencia.getVerticeB())) {
-                                if (adyasenciaB.contains(e.getVerticeB())) {
+                        }
+                        if (e.getVerticeA().equalsIgnoreCase(referencia.getVerticeB())) {
+                            if (adyasenciaB.contains(e.getVerticeA())) {
 
-                                } else {
-                                    adyasenciaB.add(e.getVerticeB());
-                                }
+                            } else {
+                                adyasenciaB.add(e.getVerticeA());
                             }
-                       // }
+                        }
+                        if (e.getVerticeB().equalsIgnoreCase(referencia.getVerticeB())) {
+                            if (adyasenciaB.contains(e.getVerticeB())) {
+
+                            } else {
+                                adyasenciaB.add(e.getVerticeB());
+                            }
+                        }
+                        // }
 
                     }
                     if (adyasenciaA.isEmpty() || adyasenciaA.isEmpty()) {
-                      
+
                     } else {
                         String aa = "";
                         String bb = "";
@@ -506,7 +506,7 @@ public class main extends javax.swing.JFrame {
                         for (String c : adyasenciaB) {
                             bb += c;
                         }
-                        System.out.println("Arista referencia: " + referencia.getVerticeA()+referencia.getVerticeB());
+                        System.out.println("Arista referencia: " + referencia.getVerticeA() + referencia.getVerticeB());
                         System.out.println("AdyasenciaA: " + aa);
                         System.out.println("AdyasenciaB: " + bb);
 
@@ -563,8 +563,26 @@ public class main extends javax.swing.JFrame {
     private void solicitar_caminoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_solicitar_caminoActionPerformed
         // TODO add your handling code here:
         ArrayList<edge> edges = this.myGrafo.getEdges();
-        ArrayList<Vertice> nodos = this.myGrafo.getVertices();
-        String camino=JOptionPane.showInputDialog(null,"Introduzca el camino que solicita(solo vertices)","Buscador de caminos",JOptionPane.QUESTION_MESSAGE);
+        String camino = JOptionPane.showInputDialog(null, "Introduzca el camino que solicita(solo vertices)", "Buscador de caminos", JOptionPane.QUESTION_MESSAGE);
+        if (camino.length() < 2) {
+            JOptionPane.showMessageDialog(null, "Debes ingresar por lo menos dos vertices existentes");
+        } else {
+            if (expresion_correcta(camino)) {
+                boolean existe_camino=true;
+                for (int i = 0; i < camino.length(); i++) {
+                    if (i < camino.length() - 1) {
+                        String v1 = "" + camino.charAt(i);
+                        String v2 = "" + camino.charAt(i + 1);
+                        for(edge e: edges){
+                            
+                        }
+                    }
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Debes ingresar el nombre de vertices existentes");
+            }
+        }
+
 
     }//GEN-LAST:event_solicitar_caminoActionPerformed
 
@@ -588,6 +606,24 @@ public class main extends javax.swing.JFrame {
         this.posicionx = valorx;
         this.posiciony = valory;
 
+    }
+
+    public boolean expresion_correcta(String camino) {
+        boolean correcto = true;
+        ArrayList<Vertice> nodos = this.myGrafo.getVertices();
+        for (int i = 0; i < camino.length(); i++) {
+            String name = "" + camino.charAt(i);
+            int contador = 0;
+            for (Vertice v : nodos) {
+                if (v.getName().equalsIgnoreCase(name)) {
+                    contador++;
+                }
+            }
+            if (contador == 0) {
+                correcto = false;
+            }
+        }
+        return correcto;
     }
 
     private void imprimir_grafo() {

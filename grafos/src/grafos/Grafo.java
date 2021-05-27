@@ -75,6 +75,9 @@ public class Grafo extends javax.swing.JFrame {
             y = myY;
             name = myName;
         }
+        public String getName (){
+            return name;
+        }
     }
 
     class edge {
@@ -98,6 +101,7 @@ public class Grafo extends javax.swing.JFrame {
         public String getVerticeB(){
             return verticeB;
         }
+       
     }
 
     public void addVertice(String name, int x, int y) {
@@ -128,6 +132,7 @@ public class Grafo extends javax.swing.JFrame {
     public ArrayList<edge> getEdges() {
         return edges;
     }
+    
 
     public void addEdge(int i, int j, int peso, String a, String b) {
         //add an edge between nodes i and j
