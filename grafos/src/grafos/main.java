@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Proyecto_grafos;
+package grafos;
 
-import Proyecto_grafos.Grafo.Vertice;
-import Proyecto_grafos.Grafo.edge;
+import grafos.Grafo.Vertice;
+import grafos.Grafo.edge;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -562,9 +562,12 @@ public class main extends javax.swing.JFrame {
 
     private void solicitar_caminoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_solicitar_caminoActionPerformed
         // TODO add your handling code here:
-
+        ArrayList<edge> edges = this.myGrafo.getEdges();
+        ArrayList<Vertice> nodos = this.myGrafo.getVertices();
+        String camino=JOptionPane.showInputDialog(null,"Introduzca el camino que solicita(solo vertices)","Buscador de caminos",JOptionPane.QUESTION_MESSAGE);
 
     }//GEN-LAST:event_solicitar_caminoActionPerformed
+
     private void generar_posicion(ArrayList<Vertice> nn) {
 
         int valorx = 0;
