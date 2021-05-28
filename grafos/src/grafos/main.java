@@ -8,6 +8,7 @@ package grafos;
 import grafos.Grafo.Vertice;
 import grafos.Grafo.edge;
 import java.util.ArrayList;
+import java.util.Random;
 import javax.swing.JOptionPane;
 
 /**
@@ -23,7 +24,9 @@ public class main extends javax.swing.JFrame {
 
     int posicionx = 0;
     int posiciony = 0;
-
+     Random random = new Random();
+    int ultima_posicionx=0;
+    int ultima_posiciony=0;
     public main() {
         initComponents();
     }
@@ -73,6 +76,8 @@ public class main extends javax.swing.JFrame {
         peso_arista = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         label_ciclo = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         jLabel6.setText("jLabel6");
 
@@ -193,15 +198,53 @@ public class main extends javax.swing.JFrame {
 
         label_ciclo.setText("Calcular");
 
+        jButton1.setText("Eliminar");
+
+        jButton2.setText("Eliminar");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(calcular_grado_vertice, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(dibujar_grafo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(suma_grados_vertices, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(grado_menor_vertices, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(solicitar_camino, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
+                    .addComponent(buscar_ciclos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(61, 61, 61)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(label_grado_grafo, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel13)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(label_suma_grados, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(label_grafo, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel15)
+                            .addComponent(jLabel14))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(label_grado_menor, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(label_ciclo, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -212,72 +255,43 @@ public class main extends javax.swing.JFrame {
                                 .addGap(26, 26, 26)
                                 .addComponent(etiqueta_vertice, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(40, 40, 40)
-                                .addComponent(agregar_vertice, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(agregar_vertice, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addGap(20, 20, 20)
-                                        .addComponent(jLabel5)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(etiqueta_arista, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(50, 50, 50))
                                     .addGroup(layout.createSequentialGroup()
                                         .addContainerGap()
                                         .addComponent(jLabel4)
-                                        .addGap(199, 199, 199)))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGap(199, 199, 199))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGap(20, 20, 20)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(agregar_arista, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(jLabel5)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(etiqueta_arista, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGap(50, 50, 50)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jLabel7)
-                                    .addComponent(vertice_a, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(vertice_a, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
+                                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(33, 33, 33)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel8)
                                         .addGap(146, 146, 146)
-                                        .addComponent(jLabel10)
-                                        .addGap(0, 0, Short.MAX_VALUE))
+                                        .addComponent(jLabel10))
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(vertice_b, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(peso_arista, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
-                                        .addComponent(agregar_arista, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(165, 165, 165))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(calcular_grado_vertice, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(dibujar_grafo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(29, 29, 29)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(suma_grados_vertices, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(grado_menor_vertices, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(solicitar_camino, javax.swing.GroupLayout.DEFAULT_SIZE, 178, Short.MAX_VALUE)
-                            .addComponent(buscar_ciclos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(61, 61, 61)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel11)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(label_grado_grafo, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel13)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(label_suma_grados, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(label_grafo, javax.swing.GroupLayout.PREFERRED_SIZE, 397, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel15)
-                                    .addComponent(jLabel14))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(label_grado_menor, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(label_ciclo, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 60, Short.MAX_VALUE)))
+                                        .addComponent(peso_arista, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(0, 324, Short.MAX_VALUE))
+                    .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jSeparator2)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -287,10 +301,11 @@ public class main extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
                     .addComponent(jLabel3)
                     .addComponent(etiqueta_vertice, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(agregar_vertice, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(agregar_vertice, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -306,11 +321,14 @@ public class main extends javax.swing.JFrame {
                     .addComponent(etiqueta_arista, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5)
                     .addComponent(vertice_b, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(agregar_arista, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(peso_arista, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(60, 60, 60)
-                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(agregar_arista, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
+                .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -338,11 +356,11 @@ public class main extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel15)
                             .addComponent(label_grado_menor, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel14)
                     .addComponent(label_ciclo))
-                .addGap(0, 12, Short.MAX_VALUE))
+                .addGap(14, 14, 14))
         );
 
         pack();
@@ -368,6 +386,7 @@ public class main extends javax.swing.JFrame {
                 this.generar_posicion(nodos);
                 this.myGrafo.addVertice(nombre, this.posicionx, this.posiciony);
                 this.imprimir_grafo();
+                this.etiqueta_vertice.setText("");
             }
         }
     }//GEN-LAST:event_agregar_verticeActionPerformed
@@ -413,6 +432,10 @@ public class main extends javax.swing.JFrame {
                 } else {
                     this.myGrafo.addEdge(posA, posB, peso, verticeA, verticeB);
                     this.imprimir_grafo();
+                    this.vertice_a.setText("");
+                    this.vertice_b.setText("");
+                    this.peso_arista.setText("");
+                    this.etiqueta_arista.setText("");
                 }
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Debe Ingresar vertices validos");
@@ -425,7 +448,7 @@ public class main extends javax.swing.JFrame {
         // TODO add your handling code here:
         //Aqui llamamos el frame que contiene el dibujo de grafo
         //myGrafo.setSize(400,300);
-        myGrafo.setSize(1000, 100);
+        myGrafo.setSize(1200, 1100);
         myGrafo.setVisible(true);
     }//GEN-LAST:event_dibujar_grafoActionPerformed
 
@@ -568,16 +591,30 @@ public class main extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Debes ingresar por lo menos dos vertices existentes");
         } else {
             if (expresion_correcta(camino)) {
-                boolean existe_camino=true;
+                boolean existe_camino=false;
+                int aristas_existentes = 0;
                 for (int i = 0; i < camino.length(); i++) {
+                    boolean real=false;
                     if (i < camino.length() - 1) {
                         String v1 = "" + camino.charAt(i);
                         String v2 = "" + camino.charAt(i + 1);
                         for(edge e: edges){
-                            
+                            if((e.getVerticeA().equalsIgnoreCase(v1)||e.getVerticeB().equalsIgnoreCase(v1))
+                                    &&(e.getVerticeB().equalsIgnoreCase(v1)||e.getVerticeB().equalsIgnoreCase(v2))){
+                                real=true;
+                            }
                         }
                     }
+                    if(real)
+                        aristas_existentes++;
                 }
+                if(aristas_existentes ==(camino.length()-1)){
+                     existe_camino=true;
+                     JOptionPane.showMessageDialog(rootPane, "El camino existe");
+                }else{
+                    JOptionPane.showMessageDialog(rootPane, "El NO camino existe");
+                }
+                   
             } else {
                 JOptionPane.showMessageDialog(null, "Debes ingresar el nombre de vertices existentes");
             }
@@ -587,22 +624,37 @@ public class main extends javax.swing.JFrame {
     }//GEN-LAST:event_solicitar_caminoActionPerformed
 
     private void generar_posicion(ArrayList<Vertice> nn) {
-
-        int valorx = 0;
-        int valory = 0;
-        boolean continuar = true;
+        Random aleatoria = new Random();
+        int valorx = ((int) Math.floor(Math.random() * (550 - 60 + 1)))+this.ultima_posicionx;
+        int valory = ((int) Math.floor(Math.random() * (550 - 60 + 1)))+this.ultima_posiciony;
+        this.ultima_posicionx=((int) Math.floor(Math.random() * (150 - 50 + 1)));
+        this.ultima_posiciony=((int) Math.floor(Math.random() * (200 - 50 + 1)));;
+        /**boolean continuar = true;
         while (continuar) {
             boolean existe = false;
-            valorx = ((int) Math.floor(Math.random() * (250 - 60 + 1) + 60)) + 25;
-            valory = ((int) Math.floor(Math.random() * (250 - 60 + 1) + 60)) + 30;
+            int power= aleatoria.nextInt(50);
+            valorx = (((int) Math.floor(Math.random() * (550 - 60 + 1) + 60)) + 25)+power;
+            valory = (((int) Math.floor(Math.random() * (600 - 60 + 1) + 80)) + 30)+power;
+            //valorx=aleatoria.nextInt(600);
+            //valorx=aleatoria.nextInt(700);
             for (Vertice n : nn) {
                 if (n.x == valorx || n.y == valory) {
                     existe = true;
+                }else{
+                    int basen=n.x+n.y;
+                    int basep=valorx+valory;
+                    int diferencia =basen-basep;
+                    if(diferencia <80)
+                        valorx+=power;
+                        valory+=power;
+                     if(diferencia <-50)
+                        valorx+=power;
+                        valory+=power;
                 }
             }
             continuar = existe;
-
-        }
+            
+        }**/
         this.posicionx = valorx;
         this.posiciony = valory;
 
@@ -686,6 +738,8 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JTextField etiqueta_arista;
     private javax.swing.JTextField etiqueta_vertice;
     private javax.swing.JButton grado_menor_vertices;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

@@ -46,6 +46,7 @@ public class Grafo extends javax.swing.JFrame {
         setTitle("Grafo");
         setMinimumSize(new java.awt.Dimension(1000, 1000));
         setName("grafo"); // NOI18N
+        setPreferredSize(new java.awt.Dimension(1130, 1000));
         setResizable(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -117,7 +118,7 @@ public class Grafo extends javax.swing.JFrame {
         }
 
         if (existe) {
-            JOptionPane.showMessageDialog(rootPane, "Ya existe este nodo, prueba con otros valores");
+            JOptionPane.showMessageDialog(rootPane, "Ya existe este vertice, prueba con otros valores");
         } else {
             nodes.add(new Vertice(name, x, y));
             this.repaint();
