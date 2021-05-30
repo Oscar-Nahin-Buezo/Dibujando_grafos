@@ -20,14 +20,14 @@ public class Grafo extends javax.swing.JFrame {
     int width;
     int height;
 
-    ArrayList<Vertice> nodes;
+    ArrayList<Vertice> vertices;
     ArrayList<edge> edges;
 
     /**
      * Creates new form Dibujar_grafo
      */
     public Grafo() {
-        nodes = new ArrayList<Vertice>();
+        vertices = new ArrayList<Vertice>();
         edges = new ArrayList<edge>();
         width = 30;
         height = 30;
@@ -108,7 +108,7 @@ public class Grafo extends javax.swing.JFrame {
     public void addVertice(String name, int x, int y) {
         //add a node at pixel (x,y)
         boolean existe = false;
-        for (Vertice n : nodes) {
+        for (Vertice n : vertices) {
             if (n.name.equalsIgnoreCase(name)) {
                 existe = true;
             }
@@ -120,14 +120,14 @@ public class Grafo extends javax.swing.JFrame {
         if (existe) {
             JOptionPane.showMessageDialog(rootPane, "Ya existe este vertice, prueba con otros valores");
         } else {
-            nodes.add(new Vertice(name, x, y));
+            vertices.add(new Vertice(name, x, y));
             this.repaint();
         }
 
     }
 
     public ArrayList<Vertice> getVertices() {
-        return nodes;
+        return vertices;
     }
     
     public ArrayList<edge> getEdges() {
@@ -136,31 +136,31 @@ public class Grafo extends javax.swing.JFrame {
     
 
     public void addEdge(int i, int j, int peso, String a, String b) {
-        //add an edge between nodes i and j
-        Vertice uno = nodes.get(i);
-        Vertice dos = nodes.get(j);
+        //add an edge between vertices i and j
+        Vertice uno = vertices.get(i);
+        Vertice dos = vertices.get(j);
         int posx = (uno.x + dos.x) / 2;
         int posy = (uno.y + dos.y) / 2;
         edges.add(new edge(i, j, peso, a, b, posx, posy));//agregue a y b como las etiquetas de los vertices
         this.repaint();
     }
 
-    public void paint(Graphics g) { // draw the nodes and edges
+    public void paint(Graphics g) { // draw the vertices and edges
 
         FontMetrics f = g.getFontMetrics();
-        int nodeHeight = Math.max(height, f.getHeight());
+        int verticeHeight = Math.max(height, f.getHeight());
         System.out.println("F height: " + f.getHeight());
         g.setColor(Color.black);
         for (edge e : edges) {
             String valor=String.valueOf(e.peso);
-            g.drawLine(nodes.get(e.i).x, nodes.get(e.i).y,
-                    nodes.get(e.j).x, nodes.get(e.j).y);
+            g.drawLine(vertices.get(e.i).x, vertices.get(e.i).y,
+                    vertices.get(e.j).x, vertices.get(e.j).y);
             g.drawString(valor, e.posicionX,
                     e.posicionY);
         }
 
-        for (Vertice n : nodes) {
-            int nodeWidth = Math.max(width, f.stringWidth(n.name) + width / 2);
+        for (Vertice n : vertices) {
+            int verticeWidth = Math.max(width, f.stringWidth(n.name) + width / 2);
             System.out.println("x: " + n.x);
             System.out.println("y: " + n.y);
             System.out.println("F stringwid: " + f.stringWidth(n.name));
@@ -170,15 +170,15 @@ public class Grafo extends javax.swing.JFrame {
             float b = Rand.nextFloat();
             Color randomColor = new Color(r, gg, b);
             g.setColor(randomColor);
-            g.fillOval(n.x - nodeWidth / 2, n.y - nodeHeight / 2,
-                    nodeWidth, nodeHeight);
+            g.fillOval(n.x - verticeWidth / 2, n.y - verticeHeight / 2,
+                    verticeWidth, verticeHeight);
             g.setColor(Color.black);
-            g.drawOval(n.x - nodeWidth / 2, n.y - nodeHeight / 2,
-                    nodeWidth, nodeHeight);
+            g.drawOval(n.x - verticeWidth / 2, n.y - verticeHeight / 2,
+                    verticeWidth, verticeHeight);
 
             g.drawString(n.name, n.x - f.stringWidth(n.name) / 2,
                     n.y + f.getHeight() / 2);
-            System.out.println("Posicion del vertice " + n.name + " X:" + (n.x - nodeWidth / 2) + " y:" + (n.y - nodeHeight / 2) + " nodeWith: " + nodeWidth + " nodeHeight: " + nodeHeight);
+            System.out.println("Posicion del vertice " + n.name + " X:" + (n.x - verticeWidth / 2) + " y:" + (n.y - verticeHeight / 2) + " nodeWith: " + verticeWidth + " verticeHeight: " + verticeHeight);
         }
     }
 

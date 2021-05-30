@@ -10,6 +10,7 @@ import grafos.Grafo.edge;
 import java.util.ArrayList;
 import java.util.Random;
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 
 /**
  *
@@ -24,9 +25,10 @@ public class main extends javax.swing.JFrame {
 
     int posicionx = 0;
     int posiciony = 0;
-     Random random = new Random();
-    int ultima_posicionx=0;
-    int ultima_posiciony=0;
+    Random random = new Random();
+    int ultima_posicionx = 0;
+    int ultima_posiciony = 0;
+
     public main() {
         initComponents();
     }
@@ -49,8 +51,6 @@ public class main extends javax.swing.JFrame {
         etiqueta_vertice = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        etiqueta_arista = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         vertice_a = new javax.swing.JTextField();
@@ -112,8 +112,6 @@ public class main extends javax.swing.JFrame {
         jLabel3.setText("Etiqueta:");
 
         jLabel4.setText("Aristas");
-
-        jLabel5.setText("Etiqueta");
 
         jLabel7.setText("Vertice a");
 
@@ -198,6 +196,7 @@ public class main extends javax.swing.JFrame {
 
         label_ciclo.setText("Calcular");
 
+        jButton1.setBackground(new java.awt.Color(255, 51, 51));
         jButton1.setText("Eliminar");
 
         jButton2.setText("Eliminar");
@@ -265,29 +264,22 @@ public class main extends javax.swing.JFrame {
                                         .addComponent(jLabel4)
                                         .addGap(199, 199, 199))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addGap(20, 20, 20)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(agregar_arista, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(jLabel5)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(etiqueta_arista, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                        .addGap(50, 50, 50)))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel7)
-                                    .addComponent(vertice_a, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addGap(33, 33, 33)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel8)
-                                        .addGap(146, 146, 146)
-                                        .addComponent(jLabel10))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(vertice_b, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(42, 42, 42)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                .addComponent(vertice_a, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(agregar_arista, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(jLabel7))
                                         .addGap(18, 18, 18)
-                                        .addComponent(peso_arista, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(0, 324, Short.MAX_VALUE))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel8)
+                                            .addComponent(vertice_b, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(peso_arista, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel10))))
+                        .addGap(0, 428, Short.MAX_VALUE))
                     .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addContainerGap()
@@ -301,32 +293,31 @@ public class main extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE, false)
-                    .addComponent(jLabel3)
-                    .addComponent(etiqueta_vertice, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(agregar_vertice, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(agregar_vertice, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel3)
+                        .addComponent(etiqueta_vertice, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel4)
-                .addGap(15, 15, 15)
+                .addGap(7, 7, 7)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(jLabel8)
                     .addComponent(jLabel10))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(vertice_a, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(etiqueta_arista, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5)
                     .addComponent(vertice_b, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(peso_arista, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(22, 22, 22)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(agregar_arista, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(20, 20, 20)
                 .addComponent(jSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -396,49 +387,54 @@ public class main extends javax.swing.JFrame {
         if (this.vertice_a.getText().equalsIgnoreCase("") || this.vertice_b.getText().equalsIgnoreCase("")) {
             JOptionPane.showMessageDialog(rootPane, "Debe ingresar los vertices que quiere unir");
         } else {
-            boolean existeA = false;
-            boolean existeB = false;
-            int posA = 0;
-            int posB = 0;
-            int peso = Integer.parseInt(this.peso_arista.getText());
-            ArrayList<edge> my_aristas = this.myGrafo.getEdges();
-            ArrayList<Vertice> nodos = this.myGrafo.getVertices();
-            String verticeA = this.vertice_a.getText();
-            String verticeB = this.vertice_b.getText();
-            for (Vertice nodo : nodos) {
-                if (nodo.name.equalsIgnoreCase(verticeA)) {
-                    existeA = true;
-                    posA = nodos.indexOf(nodo);
-                }
-            }
-            for (Vertice nodo : nodos) {
-                if (nodo.name.equalsIgnoreCase(verticeB)) {
-                    existeB = true;
-                    posB = nodos.indexOf(nodo);
-                }
-            }
-            if (existeA && existeB) {
-                boolean existe = false;
-
-                for (edge arista : my_aristas) {
-                    if (arista.verticeA.equalsIgnoreCase(verticeA) || arista.verticeA.equalsIgnoreCase(verticeB)) {
-                        if (arista.verticeB.equalsIgnoreCase(verticeA) || arista.verticeB.equalsIgnoreCase(verticeB)) {
-                            existe = true;
-                        }
+            try {
+                boolean existeA = false;
+                boolean existeB = false;
+                int posA = 0;
+                int posB = 0;
+                int peso = Integer.parseInt(this.peso_arista.getText());
+                ArrayList<edge> my_aristas = this.myGrafo.getEdges();
+                ArrayList<Vertice> nodos = this.myGrafo.getVertices();
+                String verticeA = this.vertice_a.getText();
+                String verticeB = this.vertice_b.getText();
+                for (Vertice nodo : nodos) {
+                    if (nodo.name.equalsIgnoreCase(verticeA)) {
+                        existeA = true;
+                        posA = nodos.indexOf(nodo);
                     }
                 }
-                if (existe) {
-                    JOptionPane.showMessageDialog(rootPane, "Ya existe esta arista entre ambos vertices");
-                } else {
-                    this.myGrafo.addEdge(posA, posB, peso, verticeA, verticeB);
-                    this.imprimir_grafo();
-                    this.vertice_a.setText("");
-                    this.vertice_b.setText("");
-                    this.peso_arista.setText("");
-                    this.etiqueta_arista.setText("");
+                for (Vertice nodo : nodos) {
+                    if (nodo.name.equalsIgnoreCase(verticeB)) {
+                        existeB = true;
+                        posB = nodos.indexOf(nodo);
+                    }
                 }
-            } else {
-                JOptionPane.showMessageDialog(rootPane, "Debe Ingresar vertices validos");
+                if (existeA && existeB) {
+                    boolean existe = false;
+
+                    for (edge arista : my_aristas) {
+                        if (arista.verticeA.equalsIgnoreCase(verticeA) || arista.verticeA.equalsIgnoreCase(verticeB)) {
+                            if (arista.verticeB.equalsIgnoreCase(verticeA) || arista.verticeB.equalsIgnoreCase(verticeB)) {
+                                existe = true;
+                            }
+                        }
+                    }
+                    if (existe) {
+                        JOptionPane.showMessageDialog(rootPane, "Ya existe esta arista entre ambos vertices");
+                    } else {
+                        this.myGrafo.addEdge(posA, posB, peso, verticeA, verticeB);
+                        this.imprimir_grafo();
+                        this.vertice_a.setText("");
+                        this.vertice_b.setText("");
+                        this.peso_arista.setText("");
+
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(rootPane, "Debe Ingresar vertices validos");
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(rootPane, "Algo salio mal, tome en cuenta:\n1. Ingrese solo numeros en el peso de la arista"
+                        + "\n.2 Ingrese vertices existentes");
             }
 
         }
@@ -454,21 +450,9 @@ public class main extends javax.swing.JFrame {
 
     private void calcular_grado_verticeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calcular_grado_verticeActionPerformed
         // TODO add your handling code here:
-        int mayor = 0;
-        ArrayList<Vertice> nodos = this.myGrafo.getVertices();
         ArrayList<edge> edges = this.myGrafo.getEdges();
-        for (Vertice n : nodos) {
-            int grado_temp = 0;
-            for (edge e : edges) {
-                if (e.verticeA.equals(n.name) || e.verticeB.equalsIgnoreCase(n.name)) {
-                    grado_temp++;
-                }
-            }
-            if (grado_temp > mayor) {
-                mayor = grado_temp;
-            }
-        }
-        this.label_grado_grafo.setText(Integer.toString(mayor));
+        int grado = edges.size() * 2;
+        this.label_grado_grafo.setText(Integer.toString(grado));
     }//GEN-LAST:event_calcular_grado_verticeActionPerformed
 
     private void buscar_ciclosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscar_ciclosActionPerformed
@@ -559,7 +543,7 @@ public class main extends javax.swing.JFrame {
     private void suma_grados_verticesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_suma_grados_verticesActionPerformed
         // TODO add your handling code here:
         ArrayList<edge> edges = this.myGrafo.getEdges();
-        String suma = String.valueOf(edges.size());
+        String suma = String.valueOf(edges.size() * 2);
         this.label_suma_grados.setText(suma);
     }//GEN-LAST:event_suma_grados_verticesActionPerformed
 
@@ -585,39 +569,53 @@ public class main extends javax.swing.JFrame {
 
     private void solicitar_caminoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_solicitar_caminoActionPerformed
         // TODO add your handling code here:
-        ArrayList<edge> edges = this.myGrafo.getEdges();
-        String camino = JOptionPane.showInputDialog(null, "Introduzca el camino que solicita(solo vertices)", "Buscador de caminos", JOptionPane.QUESTION_MESSAGE);
-        if (camino.length() < 2) {
-            JOptionPane.showMessageDialog(null, "Debes ingresar por lo menos dos vertices existentes");
-        } else {
-            if (expresion_correcta(camino)) {
-                boolean existe_camino=false;
-                int aristas_existentes = 0;
-                for (int i = 0; i < camino.length(); i++) {
-                    boolean real=false;
-                    if (i < camino.length() - 1) {
-                        String v1 = "" + camino.charAt(i);
-                        String v2 = "" + camino.charAt(i + 1);
-                        for(edge e: edges){
-                            if((e.getVerticeA().equalsIgnoreCase(v1)||e.getVerticeB().equalsIgnoreCase(v1))
-                                    &&(e.getVerticeB().equalsIgnoreCase(v1)||e.getVerticeB().equalsIgnoreCase(v2))){
-                                real=true;
+        try {
+            ArrayList<edge> edges = this.myGrafo.getEdges();
+            String camino = JOptionPane.showInputDialog(null, "Introduzca el camino que solicita(solo vertices con - entre ellos)", "Buscador de caminos", JOptionPane.QUESTION_MESSAGE);
+            if (camino.length() < 3) {
+                JOptionPane.showMessageDialog(null, "Debes ingresar por lo menos dos vertices existentes y separados con (-)");
+            } else {
+                if (camino.charAt(0) == '-' || camino.charAt(camino.length() - 1) == '-') {
+                    JOptionPane.showMessageDialog(rootPane, "No coloques (-) al inicio o final (-a-b-)");
+                } else {
+                    String[] partes = camino.split("-");
+                    for(String ca: partes){
+                        System.out.println(ca);
+                    }
+                    if (expresion_correcta(partes)) {
+                        boolean existe_camino = false;
+                        int aristas_existentes = 0;
+                        for (int i = 0; i < partes.length; i++) {
+                            boolean real = false;
+                            if (i < partes.length - 1) {
+                                String v1 = partes[i];
+                                String v2 = partes[i+1];
+                                for (edge e : edges) {
+                                    if ((e.getVerticeA().equalsIgnoreCase(v1) || e.getVerticeB().equalsIgnoreCase(v1))
+                                            && (e.getVerticeB().equalsIgnoreCase(v2) || e.getVerticeB().equalsIgnoreCase(v2))) {
+                                        real = true;
+                                    }
+                                }
+                            }
+                            if (real) {
+                                aristas_existentes++;
                             }
                         }
+                        if (aristas_existentes == (partes.length - 1)) {
+                            existe_camino = true;
+                            JOptionPane.showMessageDialog(rootPane, "El camino existe");
+                        } else {
+                            JOptionPane.showMessageDialog(rootPane, "El camino NO existe");
+                        }
+
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Debes ingresar el nombre de vertices existentes");
                     }
-                    if(real)
-                        aristas_existentes++;
                 }
-                if(aristas_existentes ==(camino.length()-1)){
-                     existe_camino=true;
-                     JOptionPane.showMessageDialog(rootPane, "El camino existe");
-                }else{
-                    JOptionPane.showMessageDialog(rootPane, "El NO camino existe");
-                }
-                   
-            } else {
-                JOptionPane.showMessageDialog(null, "Debes ingresar el nombre de vertices existentes");
+
             }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, "Algo salio mal, recuerda:\nColocar - entre vertices");
         }
 
 
@@ -625,46 +623,34 @@ public class main extends javax.swing.JFrame {
 
     private void generar_posicion(ArrayList<Vertice> nn) {
         Random aleatoria = new Random();
-        int valorx = ((int) Math.floor(Math.random() * (550 - 60 + 1)))+this.ultima_posicionx;
-        int valory = ((int) Math.floor(Math.random() * (550 - 60 + 1)))+this.ultima_posiciony;
-        this.ultima_posicionx=((int) Math.floor(Math.random() * (150 - 50 + 1)));
-        this.ultima_posiciony=((int) Math.floor(Math.random() * (200 - 50 + 1)));;
-        /**boolean continuar = true;
-        while (continuar) {
-            boolean existe = false;
-            int power= aleatoria.nextInt(50);
-            valorx = (((int) Math.floor(Math.random() * (550 - 60 + 1) + 60)) + 25)+power;
-            valory = (((int) Math.floor(Math.random() * (600 - 60 + 1) + 80)) + 30)+power;
-            //valorx=aleatoria.nextInt(600);
-            //valorx=aleatoria.nextInt(700);
-            for (Vertice n : nn) {
-                if (n.x == valorx || n.y == valory) {
-                    existe = true;
-                }else{
-                    int basen=n.x+n.y;
-                    int basep=valorx+valory;
-                    int diferencia =basen-basep;
-                    if(diferencia <80)
-                        valorx+=power;
-                        valory+=power;
-                     if(diferencia <-50)
-                        valorx+=power;
-                        valory+=power;
-                }
-            }
-            continuar = existe;
-            
-        }**/
+        int valorx = ((int) Math.floor(Math.random() * (550 - 60 + 1))) + this.ultima_posicionx;
+        int valory = ((int) Math.floor(Math.random() * (550 - 60 + 1))) + this.ultima_posiciony;
+        this.ultima_posicionx = ((int) Math.floor(Math.random() * (150 - 50 + 1)));
+        this.ultima_posiciony = ((int) Math.floor(Math.random() * (200 - 50 + 1)));;
+        /**
+         * boolean continuar = true; while (continuar) { boolean existe = false;
+         * int power= aleatoria.nextInt(50); valorx = (((int)
+         * Math.floor(Math.random() * (550 - 60 + 1) + 60)) + 25)+power; valory
+         * = (((int) Math.floor(Math.random() * (600 - 60 + 1) + 80)) +
+         * 30)+power; //valorx=aleatoria.nextInt(600);
+         * //valorx=aleatoria.nextInt(700); for (Vertice n : nn) { if (n.x ==
+         * valorx || n.y == valory) { existe = true; }else{ int basen=n.x+n.y;
+         * int basep=valorx+valory; int diferencia =basen-basep; if(diferencia
+         * <80) valorx+=power; valory+=power; if(diferencia <-50) valorx+=power;
+         * valory+=power; } } continuar = existe;
+         *
+         * }*
+         */
         this.posicionx = valorx;
         this.posiciony = valory;
 
     }
 
-    public boolean expresion_correcta(String camino) {
+    public boolean expresion_correcta(String camino[]) {
         boolean correcto = true;
         ArrayList<Vertice> nodos = this.myGrafo.getVertices();
-        for (int i = 0; i < camino.length(); i++) {
-            String name = "" + camino.charAt(i);
+        for (int i = 0; i < camino.length; i++) {
+            String name = "" + camino[i];
             int contador = 0;
             for (Vertice v : nodos) {
                 if (v.getName().equalsIgnoreCase(name)) {
@@ -735,7 +721,6 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JButton buscar_ciclos;
     private javax.swing.JButton calcular_grado_vertice;
     private javax.swing.JButton dibujar_grafo;
-    private javax.swing.JTextField etiqueta_arista;
     private javax.swing.JTextField etiqueta_vertice;
     private javax.swing.JButton grado_menor_vertices;
     private javax.swing.JButton jButton1;
@@ -750,7 +735,6 @@ public class main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
